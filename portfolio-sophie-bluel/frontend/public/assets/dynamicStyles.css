@@ -1,0 +1,19 @@
+.d-none {
+  display: none;
+}
+.d-flex {
+  display: flex;
+}
+.d-block {
+  display: block;
+}
+.header-margin {
+  margin: 80px 0;
+}
+
+.up-movement {
+  bottom: 80px;
+}
+.hide {
+  opacity: 0;
+}

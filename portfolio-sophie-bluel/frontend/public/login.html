@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sophie Bluel - Architecte d'intérieur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="./assets/style.css">
+        <script src="login.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Sophie Bluel
+                <span>Architecte d'intérieur</span>
+            </h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./index">projets</a>
+                    </li>
+                    <li>contact</li>
+                    <li>
+                        <a href="./login">login</a>
+                    </li>
+                    <li>
+                        <img src="./assets/icons/instagram.png" alt="Instagram">
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="login">
+            <h2>Log in</h2>
+            <form action="#" id="loginForm">
+                <label for="email">
+                    E-mail
+                </label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                >
+                <label for="password">
+                    Mot de passe
+                </label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
+                    required
+                >
+                <input
+                    type="submit"
+                    name="loginButton"
+                    id="loginButton"
+                    value="Se connecter"
+                >
+                <a href="#" id="forgotPassword">Mot de passe oublié</a>
+            </form>
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li>Mentions Légales</li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

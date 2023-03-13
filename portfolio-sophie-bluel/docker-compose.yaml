@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    container_name: frontend
+    networks:
+      - sophie-bluel
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - back
+
+  back:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 5678:5678
+    container_name: express
+    networks:
+      - sophie-bluel
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+networks:
+  sophie-bluel:
+    driver: bridge

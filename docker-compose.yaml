@@ -1,0 +1,78 @@
+version: "3"
+services:
+  images-server:
+    build:
+      context: ./images-server
+      dockerfile: Dockerfile
+    ports:
+      - 5080:5080
+    container_name: images-server
+    networks:
+      - images-server
+    volumes:
+      - ./images-server:/app
+      - /app/node_modules
+
+  mon-vieux-grimoire-react:
+    build:
+      context: ./mon-vieux-grimoire/frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    container_name: vieux-grimoire-ui
+    networks:
+      - mon-vieux-grimoire
+    volumes:
+      - ./mon-vieux-grimoire/frontend/src:/app/src
+      - ./mon-vieux-grimoire/frontend/public:/app/public
+      - /app/node_modules
+    depends_on:
+      - mon-vieux-grimoire-express
+
+  mon-vieux-grimoire-express:
+    build:
+      context: ./mon-vieux-grimoire/backend
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    container_name: vieux-grimoire-api
+    networks:
+      - mon-vieux-grimoire
+    volumes:
+      - ./mon-vieux-grimoire/backend:/app
+      - /app/node_modules
+
+  sophie-bluel-front:
+    build:
+      context: ./portfolio-sophie-bluel/frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    container_name: sophie-bluel-frontend
+    networks:
+      - sophie-bluel
+    volumes:
+      - ./portfolio-sophie-bluel/frontend:/app
+    depends_on:
+      - sophie-bluel-back
+
+  sophie-bluel-back:
+    build:
+      context: ./portfolio-sophie-bluel/backend
+      dockerfile: Dockerfile
+    ports:
+      - 5678:5678
+    container_name: sophie-bluel-back
+    networks:
+      - sophie-bluel
+    volumes:
+      - ./portfolio-sophie-bluel/backend:/app
+      - /app/node_modules
+
+networks:
+  mon-vieux-grimoire:
+    driver: bridge
+  sophie-bluel:
+    driver: bridge
+  images-server:
+    driver: bridge
